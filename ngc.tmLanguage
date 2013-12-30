@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>ngc</string>
+	</array>
+	<key>name</key>
+	<string>ngc</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>comment</key>
+			<string>comment, remember no nesting</string>
+			<key>match</key>
+			<string>\(.*\)</string>
+			<key>name</key>
+			<string>comment.ngc</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>you screwed up a var &lt;&gt;</string>
+			<key>match</key>
+			<string>#[A-Za-z_]</string>
+			<key>name</key>
+			<string>invalid.illegal.ngc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>('#')</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.ngc</string>
+				</dict>
+			</dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>.ngc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<false/>
+			<key>end</key>
+			<string>/n|&gt;</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>.</string>
+					<key>name</key>
+					<string>variable.other.ngc</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>numbered variable 1-30, special so red</string>
+			<key>match</key>
+			<string>#((30$)|([0-2]?[0-9][^0-9]))</string>
+			<key>name</key>
+			<string>keyword.other.ngc</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>numbered variable &gt;30</string>
+			<key>match</key>
+			<string>#((3[1-9]$)|([0-9][0-9]{3,6}))</string>
+			<key>name</key>
+			<string>variable.other.ngc</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.other.ngc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>Variables like #&lt;z_safe&gt;</string>
+			<key>match</key>
+			<string>#(&lt;[A-Za-z0-9_]*&gt;)</string>
+			<key>name</key>
+			<string>storage.type.ngc</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>math functions and compartors</string>
+			<key>match</key>
+			<string> (sin|cos|tan|asin|acos|atan|exp|ln|sqrt|fup|fix|abs|or|xor|and|mod|gt|lt|ge|le|eq|ne)</string>
+			<key>name</key>
+			<string>keyword.operator.ngc</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>[0o]&lt;([A-Za-z0-9_]*)&gt;</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.ngc</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>named subroutine</string>
+			<key>end</key>
+			<string>endsub</string>
+			<key>name</key>
+			<string>meta.function.ngc</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>.</string>
+					<key>name</key>
+					<string>support.other.ngc</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>[oO][0-9]+ sub</string>
+			<key>comment</key>
+			<string>numbered subroutine</string>
+			<key>end</key>
+			<string>endsub</string>
+			<key>name</key>
+			<string>support.function.ngc</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.ngc</string>
+	<key>uuid</key>
+	<string>8dfc7db8-7d57-4047-9675-426f51a37712</string>
+</dict>
+</plist>
